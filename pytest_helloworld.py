@@ -8,11 +8,11 @@ import pytest
 
 class TestHelloWorldUnitTests(unittest.TestCase):
 	def test_helloworld_module_can_be_imported(self):
-		module = importlib.import_module("helloworld")
+		module = importlib.import_module("function_app")
 		self.assertIsNotNone(module)
 
 	def test_hello_function_returns_expected_text_when_available(self):
-		module = importlib.import_module("helloworld")
+		module = importlib.import_module("function_app")
 		validated = False
 
 		for name in ("hello", "hello_world", "get_message", "main"):
@@ -31,7 +31,7 @@ class TestHelloWorldUnitTests(unittest.TestCase):
 
 @pytest.mark.usefixtures("capsys")
 def test_main_prints_hello_when_return_is_none(capsys):
-	module = importlib.import_module("helloworld")
+	module = importlib.import_module("function_app")
 	main = getattr(module, "main", None)
 
 	if callable(main):
