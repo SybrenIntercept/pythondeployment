@@ -1,4 +1,6 @@
 import importlib
+import json
+from pathlib import Path
 import unittest
 
 import pytest
@@ -41,3 +43,11 @@ def test_main_prints_hello_when_return_is_none(capsys):
 			assert isinstance(result, str)
 	else:
 		assert main is None
+
+
+def test_host_json_exists_with_required_version():
+	host_file = Path(__file__).with_name("host.json")
+	assert host_file.exists()
+
+	host_config = json.loads(host_file.read_text(encoding="utf-8"))
+	assert host_config.get("version") == "2.0"
