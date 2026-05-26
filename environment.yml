@@ -1,3 +1,6 @@
 name: test
 dependencies:
+  - pip
   - pytest
+  - pip:
+      - azure-functions
