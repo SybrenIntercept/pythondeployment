@@ -40,13 +40,10 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Add conda to system path
-      run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        echo $CONDA/bin >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        conda env update --file environment.yml --name base
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
